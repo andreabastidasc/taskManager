@@ -1,0 +1,56 @@
+/* Colors */
+:root {
+    --dark-blue: #032830;
+    --custom-blue: rgb(13, 202, 240);
+    --text-blue: #6edff6;
+    --task-card-border: #F5CB5C;
+}
+
+/* Background Color Styles */
+.bg_dark_blue {
+    background-color: var(--dark-blue);
+}
+
+.bg_custom {
+    background-color: var(--custom-blue);
+}
+
+/* Text Color Styles */
+.text_blue {
+    color: var(--text-blue) !important;
+}
+
+/* Main Section */
+main {
+    height: calc(100vh - 50px);
+    padding: 0rem 2rem;
+}
+
+/* Task Card */
+.task_card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: none;
+    border: 2px solid var(--task-card-border);
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 2.5px );
+    -webkit-backdrop-filter: blur( 2.5px );
+    padding: 1rem;
+}
+
+
+/* Screen sizing */
+@media (min-width: 700px) {
+    .task_card {
+        max-width: 600px !important;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .task_card {
+        max-width: 100% !important;
+    }
+}
