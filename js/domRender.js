@@ -1,11 +1,9 @@
 function getTaskIcon(status) {
-    if (status === 'unfinished') {
-        return `<i class="bi bi-clock" style="font-size: 1.5rem; color: ${COLORS.yellow};"></i>`;
-    } else if (status === 'finished') {
-        return `<i class="bi bi-check-circle" style="font-size: 1.5rem; color: ${COLORS.green};"></i>`;
+    if (status === 'finished') {
+        return `<i class="bi bi-check-circle" style="font-size: 1.5rem; color: ${COLORS.darkGreen};"></i>`;
     }
 
-    return `<i class="bi bi-question-circle" style="font-size: 1.5rem; color: #d9534f;"></i>`;
+    return `<i class="bi bi-clock" style="font-size: 1.5rem; color: ${COLORS.orange};"></i>`;
 }
 
 function displayTasks(tasks) {
@@ -25,7 +23,11 @@ function displayTasks(tasks) {
             <div class="task_card__content">
                 <h5 class="m-0">${task.title}</h5>
                 <p class="m-0 mt-2"><strong>Description:</strong> ${task.description}</p>
-                <p class="m-0"><strong>Status:</strong> ${task.status} ${icon}</p>
+                <div class="d-flex align-items-center gap-2">
+                    <p class="m-0"><strong>Status:</strong> ${task.status}</p>
+                    ${icon}
+                </div>
+                
             </div>
             <button class="task_card__button">
                 ${playButton}

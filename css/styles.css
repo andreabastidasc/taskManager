@@ -6,7 +6,9 @@
     --primary-lighter-blue: rgba(13,110,253, 0.3);
     --text-blue: #6edff6;
     --yellow: #F5CB5C;
+    --orange: rgb(255, 135, 7);
     --green: #28a745;
+    --dark-green: #0b8326;
     --light-orange: rgba( 244, 192, 149, 0.45 );
     --light-green:  rgba( 40, 167, 69, 0.45 );
 }
@@ -17,7 +19,7 @@
 }
 
 .bg_custom {
-    background-color: var(--light-blue);
+    background-color: rgba(13, 202, 240, 0.5);
 }
 
 /* Text Color Styles */
