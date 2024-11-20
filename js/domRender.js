@@ -14,10 +14,10 @@ function displayTasks(tasks) {
     tasks.forEach(task => {
         const taskElement = document.createElement('div');
         const icon = getTaskIcon(task.status);
-        const playButton = `<i class="bi bi-play" style="font-size: 3rem; color: ${COLORS.primaryBlue}; cursor: pointer;"></i>`;
-        const taskStatusClass = task.status === 'unfinished' ? 'task_card--unfinished' : 'task_card--finished';
+        const playButtonColor = task.status === 'unfinished' ? COLORS.orange : COLORS.darkGreen
+        const playButton = `<i class="bi bi-play" style="font-size: 3rem; color: ${playButtonColor}; cursor: pointer;"></i>`;
 
-        taskElement.classList.add('task_card', 'col-12', 'rounded', taskStatusClass);
+        taskElement.classList.add('task_card', 'col-12', 'rounded', `task_card--${task.status}`);
 
         taskElement.innerHTML = `
             <div class="task_card__content">
@@ -29,7 +29,7 @@ function displayTasks(tasks) {
                 </div>
                 
             </div>
-            <button class="task_card__button">
+            <button class="task_card__button task_card_button--${task.status}">
                 ${playButton}
             </button>
         `;

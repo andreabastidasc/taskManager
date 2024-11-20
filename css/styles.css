@@ -7,6 +7,7 @@
     --text-blue: #6edff6;
     --yellow: #F5CB5C;
     --orange: rgb(255, 135, 7);
+    --lighter-orange: rgba(255, 135, 7, 0.45);
     --green: #28a745;
     --dark-green: #0b8326;
     --light-orange: rgba( 244, 192, 149, 0.45 );
@@ -27,10 +28,14 @@
     color: var(--text-blue) !important;
 }
 
+.navbar-toggler {
+    border-color: white !important;
+}
+
 /* Main Section */
 main {
-    min-height: calc(100vh - 50px);
-    padding: 1rem 2rem;
+    min-height: 100vh;
+    padding: 5rem 2rem 0rem 2rem;
 }
 
 #tasks-container {
@@ -71,8 +76,20 @@ main {
 .task_card__button {
     background: none;
     border-radius: 100%;
-    border: 3px solid var(--primary-blue);
     padding: .2rem 1rem;
+    border: 3px solid;
+}
+
+.task_card_button--finished {
+    border-color: var(--dark-green);
+}
+
+.task_card_button--unfinished {
+    border-color: var(--orange);
+}
+
+.task_card_button--unfinished:hover {
+    background-color: var(--light-orange);
 }
 
 .task_card__button:hover {
