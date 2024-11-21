@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="./css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
     <nav class="navbar bg_dark_blue fixed-top">
@@ -48,13 +51,12 @@
             </div>
         </section>
     </main>
-
-    <div class="modal fade modal-fullscreen-sm-down" id="form-modal" tabindex="-1" aria-hidden="true" aria-labelledby="form-modal-label">
+    <div class="modal fade modal-fullscreen-md-down" id="form-modal" tabindex="-1" aria-hidden="true" aria-labelledby="form-modal-label">
         <div class="modal-dialog">
             <div class="modal-content bg_dark_blue text-white">
                 <div class="modal-header">
                     <h5 class="modal-title" id="form-modal-label"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                 </div>
@@ -65,13 +67,12 @@
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="config-modal" tabindex="-1" aria-labelledby="config-modal-label" aria-hidden="true">
+    <div class="modal fade" id="config-modal" tabindex="-2" aria-labelledby="config-modal-label" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content bg_dark_blue text-white">
                 <div class="modal-header">
                     <h5 class="modal-title" id="config-modal-label">Speech Synthesis Configuration</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                 </div>
@@ -83,8 +84,11 @@
         </div>
     </div>
 
+    <!-- TOAST-->
+    <div id="toast-container" aria-live="polite" aria-atomic="true" style="position: absolute; top: 70px; right: 10px;">
+    </div>
+    
+
     <script type="module" src="./js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
 </html>

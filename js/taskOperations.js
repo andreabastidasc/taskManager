@@ -1,3 +1,6 @@
+import { displayTasks } from "./domRender.js";
+import { showToast } from "./utils.js";
+
 const apiUrl = 'https://673b84ca339a4ce4451c7db4.mockapi.io/api/v1/tasks';
 
 export async function fetchTasks() {
@@ -43,10 +46,12 @@ export async function createTask(task) {
         }
 
         const newTask = await response.json();
+        showToast(`Task ${newTask.title} created successfully!`);
 
-        await fetchTasks();
+       displayTasks();
     } catch (error) {
         console.error('Error creating task:', error);
+        showToast('Failed to create task. Please try again.', 'error');
     }
 }
 
@@ -75,9 +80,10 @@ export async function updateTaskStatus(taskId, status) {
             body: JSON.stringify(updatedTask),
         });
 
-        if (!response.ok) throw new Error('Failed to update task status');
+        if (response.ok) showToast("Task status updated successfully!");
     } catch (error) {
         console.error('Error updating task:', error);
+        showToast('Failed to update task status. Please try again.', 'error');
     }
 }
 

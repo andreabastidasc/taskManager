@@ -1,14 +1,8 @@
 import { fetchTasks, updateTaskStatus } from "./taskOperations.js";
+import { formatDate, getStatusOptions } from "./utils.js";
 
 import { COLORS } from "./colors.js";
-
-function getTaskIcon(status) {
-    if (status === 'finished') {
-        return `<i class="bi bi-check-circle" style="font-size: 1.5rem; color: ${COLORS.darkGreen};"></i>`;
-    }
-
-    return `<i class="bi bi-clock" style="font-size: 1.5rem; color: ${COLORS.orange};"></i>`;
-}
+import { playTaskSpeech } from "./speech.js";
 
 export async function displayTasks() {
     const tasks = await fetchTasks();
@@ -20,35 +14,25 @@ export async function displayTasks() {
         tasksContainer.appendChild(taskElement);
     });
 
-    attachStatusDropdownListeners();
+    attachEventListeners();
 }
 
 function createTaskElement(task) {
-    const taskElement = document.createElement('div');
     const icon = getTaskIcon(task.status);
     const statusDropdown = createStatusDropdown(task);
+    const playButton = createPlayButton(task);
 
+    const taskElement = document.createElement('div');
     taskElement.classList.add('task_card', 'col-12', 'rounded', `task_card--${task.status}`);
     taskElement.innerHTML = `
         ${createTaskContent(task, icon, statusDropdown)}
+        ${playButton}
     `;
 
     return taskElement;
 }
 
-function formatDate(dateString) {
-    const date = new Date(dateString);
-
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const year = date.getFullYear();
-
-    return `${day}/${month}/${year}`;
-}
-
 function createTaskContent(task, icon, statusDropdown) {
-    const taskDate = formatDate(task.createdAt);
-
     return `
         <div class="task_card__content">
             <h5 class="m-0">${task.title}</h5>
@@ -59,7 +43,7 @@ function createTaskContent(task, icon, statusDropdown) {
             <div class="d-flex align-items-center gap-2">
                 ${statusDropdown}
                 ${icon}
-                ${taskDate}
+                ${formatDate(task.createdAt)}
             </div>
         </div>
     `;
@@ -110,9 +94,23 @@ function createStatusDropdown(task) {
     `;
 }
 
-function getStatusOptions(currentStatus) {
-    const allStatuses = ['unfinished', 'finished'];
-    return allStatuses.filter(status => status !== currentStatus);
+function createPlayButton(task) {
+    const playButtonColor = task.status === 'unfinished' ? COLORS.orange : COLORS.darkGreen;
+    return `
+        <button 
+            class="task_card__button task_card_button--${task.status}" 
+            data-task-id="${task.id}" 
+            data-task-title="${task.title}" 
+            data-task-description="${task.description}"
+        >
+            <i class="bi bi-play" style="font-size: 3rem; color: ${playButtonColor}; cursor: pointer;"></i>
+        </button>
+    `;
+}
+
+function attachEventListeners() {
+    attachStatusDropdownListeners();
+    attachPlayTaskListeners();
 }
 
 function attachStatusDropdownListeners() {
@@ -125,8 +123,27 @@ function attachStatusDropdownListeners() {
             const newStatus = option.getAttribute('data-status');
 
             await updateTaskStatus(taskId, newStatus);
-
-            await fetchTasks();
+            await displayTasks();
         });
     });
+}
+
+function attachPlayTaskListeners() {
+    const playButtons = document.querySelectorAll('.task_card__button');
+
+    playButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const taskTitle = button.getAttribute('data-task-title');
+            const taskDescription = button.getAttribute('data-task-description');
+            playTaskSpeech(taskTitle, taskDescription);
+        });
+    });
+}
+
+
+function getTaskIcon(status) {
+    if (status === 'finished') {
+        return `<i class="bi bi-check-circle" style="font-size: 1.5rem; color: ${COLORS.darkGreen};"></i>`;
+    }
+    return `<i class="bi bi-clock" style="font-size: 1.5rem; color: ${COLORS.orange};"></i>`;
 }
