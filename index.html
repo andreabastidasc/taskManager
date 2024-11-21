@@ -22,14 +22,14 @@
                 <div class="offcanvas-body bg_dark_blue">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active text-white" aria-current="page" href="#">
+                            <button class="nav-link text-white" type="button" data-action="create" data-bs-toggle="modal" data-bs-target="#form-modal">
                                 Create task
-                            </a>
+                            </button>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">
+                            <button class="nav-link text-white" type="button" data-action="update" data-bs-toggle="modal" data-bs-target="#form-modal">
                                 Change task status
-                            </a>
+                            </button>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="#">
@@ -43,17 +43,36 @@
     </nav>
     <main class="bg_custom">
         <section class="container gap-3" >
-            <div class="row" id="tasks-container">
-                <div class="task_card col-12 rounded">
+            <div class="row justify-content-lg-start" id="tasks-container">
+                <div class="spinner-border text-warning" style="width: 4rem; height: 4rem;" id="spinner" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="task_card col-12 rounded visually-hidden" id="placeholder">
                     No tasks created yet
                 </div>
             </div>
         </section>
     </main>
 
+    <div class="modal fade modal-fullscreen-sm-down" id="form-modal" tabindex="-1" aria-hidden="true" aria-labelledby="form-modal-label">
+        <div class="modal-dialog">
+            <div class="modal-content bg_dark_blue text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="form-modal-label"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-
+    <script src="./js/modals.js"></script>
     <script src="./js/taskOperations.js"></script>
     <script src="./js/colors.js"></script>
     <script src="./js/domRender.js"></script>

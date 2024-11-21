@@ -16,7 +16,7 @@
 
 /* Background Color Styles */
 .bg_dark_blue {
-    background-color: var(--dark-blue);
+    background-color: var(--dark-blue) !important;
 }
 
 .bg_custom {
@@ -35,7 +35,8 @@
 /* Main Section */
 main {
     min-height: 100vh;
-    padding: 5rem 2rem 0rem 2rem;
+    max-height: max-content;
+    padding: 5rem 2rem 3rem 2rem;
 }
 
 #tasks-container {
@@ -89,16 +90,22 @@ main {
 }
 
 .task_card_button--unfinished:hover {
+    transition: 200ms ease-in-out;
     background-color: var(--light-orange);
 }
 
-.task_card__button:hover {
+.task_card_button--finished:hover {
     transition: 200ms ease-in-out;
-    background-color: var(--primary-lighter-blue);
+    background-color: var(--light-green);
 }
 
 .task_card__content p {
     margin: 0;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-image: none;    
+    background-color: inherit;
 }
 
 
