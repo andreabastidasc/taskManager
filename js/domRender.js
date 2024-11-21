@@ -1,3 +1,8 @@
+import { fetchTasks, updateTaskStatus } from "./taskOperations.js";
+
+import { COLORS } from "./colors.js";
+import { setupModalHandlers } from "./modals.js";
+
 function getTaskIcon(status) {
     if (status === 'finished') {
         return `<i class="bi bi-check-circle" style="font-size: 1.5rem; color: ${COLORS.darkGreen};"></i>`;
@@ -6,9 +11,10 @@ function getTaskIcon(status) {
     return `<i class="bi bi-clock" style="font-size: 1.5rem; color: ${COLORS.orange};"></i>`;
 }
 
-function displayTasks(tasks) {
+export function displayTasks(tasks) {
     const tasksContainer = document.getElementById('tasks-container');
     tasksContainer.innerHTML = '';
+    console.log('DISPLAY TASKS')
 
     tasks.forEach(task => {
         const taskElement = createTaskElement(task);
@@ -125,3 +131,7 @@ function attachStatusDropdownListeners() {
         });
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    setupModalHandlers();
+});

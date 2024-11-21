@@ -1,4 +1,4 @@
-const COLORS = {
+export const COLORS = {
     darkBlue: '#032830',
     lightBlue: 'rgb(13, 202, 240)',
     textBlue: '#6edff6',

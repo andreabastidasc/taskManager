@@ -1,8 +1,6 @@
-document.addEventListener('DOMContentLoaded', () => {
-    setupModalHandlers();
-});
+import { createTask } from "./taskOperations.js";
 
-function setupModalHandlers() {
+export function setupModalHandlers() {
     const formModal = document.getElementById('form-modal');
     const modalTitle = formModal.querySelector('.modal-title');
     const modalBody = formModal.querySelector('.modal-body');

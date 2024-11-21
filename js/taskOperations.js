@@ -1,6 +1,8 @@
+import { displayTasks } from "./domRender.js";
+
 const apiUrl = 'https://673b84ca339a4ce4451c7db4.mockapi.io/api/v1/tasks';
 
-async function fetchTasks() {
+export async function fetchTasks() {
     try {
         const spinner = document.getElementById('spinner');
         const placeholder = document.getElementById('placeholder');
@@ -28,7 +30,7 @@ async function fetchTasks() {
     }
 }
 
-async function createTask(task) {
+export async function createTask(task) {
     try {
         const response = await fetch(apiUrl, {
             method: 'POST',
@@ -60,7 +62,7 @@ function sortTasks(tasks) {
     return [...unfinishedTasks, ...finishedTasks];
 }
 
-async function updateTaskStatus(taskId, status) {
+export async function updateTaskStatus(taskId, status) {
     try {
         const endDate = status === 'finished' ? new Date().toISOString() : null;
 
