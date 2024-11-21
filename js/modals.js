@@ -56,6 +56,13 @@ function setupCreateTaskModal() {
                     <label for="taskDescription" class="form-label">Task Description</label>
                     <textarea class="form-control" id="taskDescription" rows="3" required></textarea>
                 </div>
+                <div class="mb-3">
+                    <label for="taskStatus" class="form-label">Task Status</label>
+                    <select class="form-control" id="taskStatus" required>
+                        <option value="unfinished">Unfinished</option>
+                        <option value="finished">Finished</option>
+                    </select>
+                </div>
             </form>
         `,
         "Create Task",
@@ -87,11 +94,12 @@ function toggleSubmitButton(taskTitle, taskDescription, saveButton) {
 async function handleCreateTask(formModal) {
     const title = document.getElementById("taskTitle").value;
     const description = document.getElementById("taskDescription").value;
+    const taskStatus = formModal.querySelector('#taskStatus').value;
 
     const task = {
         title,
         description,
-        status: "unfinished",
+        status: taskStatus,
         createdAt: new Date().toISOString(),
     };
 
