@@ -1,5 +1,3 @@
-import { displayTasks } from "./domRender.js";
-
 const apiUrl = 'https://673b84ca339a4ce4451c7db4.mockapi.io/api/v1/tasks';
 
 export async function fetchTasks() {
@@ -24,7 +22,7 @@ export async function fetchTasks() {
             placeholder.style.display = 'block';
         }
 
-        displayTasks(sortedTasks);
+        return sortedTasks;
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
     }
