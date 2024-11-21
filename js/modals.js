@@ -111,7 +111,7 @@ function setupConfigModal() {
             </div>
             <div class="mb-3">
                 <label for="speedRange" class="form-label">Speech Speed</label>
-                <input type="range" class="form-range" id="speedRange" min="0.5" max="2" step="0.1" value="1">
+                <input type="range" class="form-range" id="speedRange" min="-0.9" max="1.2" step="0.1" value="1">
                 <div id="speedValue">1</div>
             </div>
         `,
